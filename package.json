@@ -1,11 +1,21 @@
 {
   "name": "natours-backend",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --watch server.js",
+    "debug": "ndb server.js"
   },
   "author": "Jonas SCHMEDTMANN / Hugo THOMAS",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.7.1",
+    "morgan": "^1.10.0",
+    "slugify": "^1.6.6",
+    "validator": "^13.12.0"
+  }
 }
