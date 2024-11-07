@@ -30,3 +30,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# parcel
+.cache/
+.parcel-cache/
+
+# Build files
+public/js/bundle.js

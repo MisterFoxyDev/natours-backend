@@ -8,6 +8,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
@@ -25,13 +26,16 @@ app.set("views", path.join(__dirname, "views"));
 // Serving static files
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-  }),
-);
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV === "production"
+      ? process.env.API_URL
+      : "http://localhost:3000",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // Set security HTTP headers
 app.use(
@@ -53,6 +57,7 @@ app.use(
       connectSrc: [
         "'self'",
         "http://127.0.0.1:3000",
+        "http://localhost:3000",
         "https://api.mapbox.com",
         "https://events.mapbox.com",
       ],
@@ -98,6 +103,9 @@ app.use(
     ],
   }),
 );
+
+// Compression
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {
