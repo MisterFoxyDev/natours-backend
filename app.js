@@ -46,6 +46,7 @@ app.use(
         "'self'",
         "https://api.mapbox.com",
         "https://cdnjs.cloudflare.com",
+        "https://natours-backend-production-8bae.up.railway.app",
       ],
       styleSrc: [
         "'self'",
@@ -60,6 +61,7 @@ app.use(
         "http://localhost:3000",
         "https://api.mapbox.com",
         "https://events.mapbox.com",
+        "https://natours-backend-production-8bae.up.railway.app",
       ],
     },
   }),
