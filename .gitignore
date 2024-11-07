@@ -34,6 +34,7 @@ next-env.d.ts
 # parcel
 .cache/
 .parcel-cache/
+/dist
 
 # Build files
 public/js/bundle.js
